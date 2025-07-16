@@ -1,9 +1,11 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/testdb
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: password
+    hikari:
+      maximum-pool-size: 99
 
   jpa:
     properties:
