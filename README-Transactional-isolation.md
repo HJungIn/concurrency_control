@@ -79,7 +79,17 @@
 > * SELECT ... FOR UPDATE: Exclusive Lock을 사용합니다. 특정 데이터에 대한 쓰기 작업을 수행하기 위해 Lock을 획득하는 방법입니다. 이로써 다른 트랜잭션들은 해당 데이터에 대한 수정 작업을 대기하게 됩니다.
 > * SELECT ... FOR SHARE: Shared Lock을 사용합니다. 데이터를 읽어올 때 Lock을 획득하며, 이는 다른 트랜잭션들도 동일한 데이터에 대한 Lock을 획득할 수 있음을 의미합니다. 다른 트랜잭션들도 읽기 작업은 가능하지만 쓰기 작업은 대기해야 합니다.
 
+---
+
+## 트랜잭션 VS LOCK
+* 트랜잭션은 근본적으로 동시성을 제어하기 위한 것이 아니라 작업의 완전성을 보장하기 위한 것
+   * 트랜잭션 격리수준은 하나의 트랜잭션 내에서 또는 여러 트랜잭션 간의 작업 내용을 어떻게 공유하고 차단할 것인지를 결정하는 레벨
+   * Serializable 에 해당하는 격리수준은 조회한 레코드에 대해 공유 잠금을 걸음으로써, 다른 트랜잭션에서 해당 데이터를 수정하지 못하도록 한다.
+* 잠금(Lock)은 동시성을 제어하기 위해서 필요한 것
+
+
 ##### 참조
 * 동시성 부작용 설명 및 이미지, Snapshot Isolation : https://amazelimi.tistory.com/entry/DB-Dirty-Read-Non-Repeatable-Read-Phantom-Read-%EC%98%88%EC%8B%9C-%EB%B0%8F-Snapshot-Isolation-Level-LIM#google_vignette
 * isolation 이론 및 설명 : https://colevelup.tistory.com/34
 * MVCC : https://velog.io/@onejaejae/DB-MVCC
+* 트랜잭션 VS LOCK : https://ikjo.tistory.com/433
